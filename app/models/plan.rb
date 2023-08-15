@@ -6,8 +6,8 @@ class Plan < ApplicationRecord
     validate :end_check
 
     def end_check
-        until self.end.nil? && self.start.nil?
-            errors.add(:end, 'は、開始日以降の日付を入力して下さい') unless self.end >= self.start
+        if not(self.end.blank? && self.start.blank?) && self.end < self.start
+            errors.add(:end, 'は、開始日以降の日付を入力して下さい')
         end
     end
 end

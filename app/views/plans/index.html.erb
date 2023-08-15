@@ -32,10 +32,10 @@
                         ○
                     <% end %>
                 </td>
-                <td><%= plan.updated_at %></td>
+                <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
                 <td><%= link_to "詳細", plan %></td>
                 <td><%= link_to "編集", [:edit, plan] %></td>
-                <td><%= link_to "削除", plan, method: :delete %></td>
+                <td><%= link_to "削除", plan, method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
             </tr>
         <% end %>
     </table>
