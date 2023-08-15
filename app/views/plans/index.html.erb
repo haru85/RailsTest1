@@ -23,8 +23,8 @@
         <tr>
             <td><%= plan.id %></td>
             <td><%= plan.title %></td>
-            <td><%= plan.start %></td>
-            <td><%= plan.end %></td>
+            <td><%= l plan.start %></td>
+            <td><%= l plan.end %></td>
             <td>
                 <% if plan.allday %>
                     ○
@@ -40,5 +40,5 @@
 
 <div class="summary">
     <h3>予定合計　<%= @plans.count %>件<h3>
-    <p>本日の日付　<%= Date.today %></p>
+    <p>本日の日付　<%= l Date.today %></p>
 </div>
