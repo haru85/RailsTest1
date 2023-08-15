@@ -1,48 +1,44 @@
-<div class = container>
-
-    <div class="top-wrapper">
-        <h3>予定一覧</h3>
-        <%= link_to "＋新規追加", :new_plan %>
+<div class="top-wrapper">
+    <h3>予定一覧</h3>
+    <%= link_to "＋新規追加", :new_plan %>
+</div>
+<% if flash[:notice] %>
+    <div class="flash">
+        <p><%= flash[:notice] %></p>
     </div>
-    <% if flash[:notice] %>
-        <div class="flash">
-            <p><%= flash[:notice] %></p>
-        </div>
-    <% end %>
-    <table>
+<% end %>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日時</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    <% @plans.each do |plan| %>
         <tr>
-            <th>ID</th>
-            <th>タイトル</th>
-            <th>開始日</th>
-            <th>終了日</th>
-            <th>終日</th>
-            <th>更新日時</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <td><%= plan.id %></td>
+            <td><%= plan.title %></td>
+            <td><%= plan.start %></td>
+            <td><%= plan.end %></td>
+            <td>
+                <% if plan.allday %>
+                    ○
+                <% end %>
+            </td>
+            <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
+            <td><%= link_to "詳細", plan %></td>
+            <td><%= link_to "編集", [:edit, plan] %></td>
+            <td><%= link_to "削除", plan, method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
         </tr>
-        <% @plans.each do |plan| %>
-            <tr>
-                <td><%= plan.id %></td>
-                <td><%= plan.title %></td>
-                <td><%= plan.start %></td>
-                <td><%= plan.end %></td>
-                <td>
-                    <% if plan.allday %>
-                        ○
-                    <% end %>
-                </td>
-                <td><%= plan.updated_at.to_s(:datetime_jp) %></td>
-                <td><%= link_to "詳細", plan %></td>
-                <td><%= link_to "編集", [:edit, plan] %></td>
-                <td><%= link_to "削除", plan, method: :delete, data: {confirm: "本当に削除しますか？"} %></td>
-            </tr>
-        <% end %>
-    </table>
+    <% end %>
+</table>
 
-    <div class="summary">
-        <h3>予定合計　<%= @plans.count %>件<h3>
-        <p>本日の日付　<%= Date.today %></p>
-    </div>
-
+<div class="summary">
+    <h3>予定合計　<%= @plans.count %>件<h3>
+    <p>本日の日付　<%= Date.today %></p>
 </div>

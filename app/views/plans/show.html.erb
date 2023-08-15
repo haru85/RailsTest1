@@ -1,33 +1,31 @@
-<div class = "container">
-    <span id="index-link"><%= link_to "← 一覧に戻る", :plans %></span>
+<span id="index-link"><%= link_to "← 一覧に戻る", :plans %></span>
 
-    <div class ="show-top-wrapper">
-        <h3><%= @plan.title %></h3>
-        <%= link_to "編集", [:edit, @plan] %>
-    </div>
+<div class ="show-top-wrapper">
+    <h3><%= @plan.title %></h3>
+    <%= link_to "編集", [:edit, @plan] %>
+</div>
 
-    <div class="show-table-wrapper">
-        <table>
-            <tr>
-                <th>開始日</th>
-                <td><%= @plan.start %></td>
-            </tr>
-            <tr>
-                <th>終了日</th>
-                <td><%= @plan.end %></td>
-            </tr>
-            <tr>
-                <th>終日</th>
-                <td>
-                    <% if @plan.allday %>
-                        ○
-                    <% end %>
-                </td>
-            </tr>
-            <tr>
-                <th>スケジュールメモ</th>
-                <td><%= @plan.memo %></td>
-            </tr>
-        </table>
-    </div>
+<div class="show-table-wrapper">
+    <table>
+        <tr>
+            <th>開始日</th>
+            <td><%= @plan.start %></td>
+        </tr>
+        <tr>
+            <th>終了日</th>
+            <td><%= @plan.end %></td>
+        </tr>
+        <tr>
+            <th>終日</th>
+            <td>
+                <% if @plan.allday %>
+                    ○
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <th>スケジュールメモ</th>
+            <td><%= @plan.memo %></td>
+        </tr>
+    </table>
 </div>
